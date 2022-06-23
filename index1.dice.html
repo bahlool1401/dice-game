@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DICE GAME</title>
+    <link rel="stylesheet" href="css/dice.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <style>
+        ::selection {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="user">
+        <button onclick="_user1()" class="user1">COMPUTER</button>
+        <button onclick="_user2()" class="user2">enter your name</button>
+        <h1 id="result" class="result">WHO`S THE WINNER?</h1>
+        <pre class="instruction">instruction : 
+        <p> 1) at first click on 'new game' to start </p><p> 2) then, you must enter your name</p><p> 3) then COMPUTER roll the dice automatically</p><p> 4) you must click on your dice to roll</p><p> 5)finally, it will show you the result</p>
+        </pre>
+        <button class="btn" onclick="_new()">new game</button>
+    </div>
+
+    <main>
+
+
+        <div class="cube1">
+            <div class="front">
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="back">
+                <pre
+                    class="set1"><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span></pre>
+
+                <pre
+                    class="set2"><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span></pre>
+            </div>
+            <div class="right">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="left">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="top">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="bottom">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+
+        </div>
+        <div class="cube2">
+            <div class="front">
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="back">
+                <pre
+                    class="set1"><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span></pre>
+
+                <pre
+                    class="set2"><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span><span><i class="demo-icon icon-circle"></i></span></pre>
+            </div>
+            <div class="right">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="left">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="top">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+            <div class="bottom">
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+                <span><i class="demo-icon icon-circle"></i></span>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    alert('HEY, WELCOME TO DICE GAME☻')
+    let cube1 = document.getElementsByClassName('cube1')[0]
+    angleArray1 = [[0, 0, 0], [-310, -362, -38], [-400, -320, -2], [135, -217, -88], [-224, -317, 5], [-47, -219, -81], [-133, -360, -53]]
+
+    let cube2 = document.getElementsByClassName('cube2')[0]
+    angleArray2 = [[0, 0, 0], [-310, -362, -38], [-400, -320, -2], [135, -217, -88], [-224, -317, 5], [-47, -219, -81], [-133, -360, -53]]
+
+    let randomAngle1
+
+
+    cube2.addEventListener('click', function (cc) {
+        let randomAngle2 = Math.floor(Math.random() * 6) + 1
+        console.log(randomAngle1 + " , " + randomAngle2)
+        cube2.style.transform = 'rotateX(' + angleArray2[randomAngle2][0] + 'deg) rotateY(' + angleArray2[randomAngle2][1] + 'deg) rotateZ(' + angleArray2[randomAngle2][2] + 'deg)'
+        cube2.style.transition = '1s linear'
+
+        cube2.style.animation = 'animate 2s linear'
+        cube2.addEventListener('animationend', function (cc) {
+            cube2.style.animation = ''
+        })
+        if (randomAngle1 > randomAngle2) {
+            setTimeout(function () {
+                document.getElementById('result').innerHTML = 'COMPUTER is the winner☺'
+            }, 2000)
+
+
+        } else if (randomAngle1 < randomAngle2) {
+            setTimeout(function () {
+                document.getElementById('result').innerHTML = '' + x2 + ' is the winner☻'
+            }, 2000)
+
+        } else {
+            setTimeout(function () {
+                document.getElementById('result').innerHTML = 'it`s draw!'
+            }, 2000)
+        }
+    })
+
+    let x1
+    let x2
+
+    // function _user1() {
+    //     let temp = prompt('ENTER USER1 NAME ?')
+    //     x1 = temp
+    //     document.getElementsByClassName('user1')[0].innerHTML = temp
+    // }
+    // function _user2() {
+    //     let temp = prompt('ENTER USER2 NAME ?')
+    //     x2 = temp
+    //     document.getElementsByClassName('user2')[0].innerHTML = temp
+    // }
+    function _new() {
+        // location.reload();
+        alert('ENTER YOUR NAME')
+        let temp = prompt('ENTER USER2 NAME ?')
+        x2 = temp
+        randomAngle1 = Math.floor(Math.random() * 6) + 1
+        cube1.style.transform = 'rotateX(' + angleArray1[randomAngle1][0] + 'deg) rotateY(' + angleArray1[randomAngle1][1] + 'deg) rotateZ(' + angleArray1[randomAngle1][2] + 'deg)'
+        cube1.style.transition = '1s linear'
+        cube1.style.animation = 'animate 1s linear'
+        document.getElementsByClassName('user2')[0].innerHTML = temp
+        document.getElementById('result').innerHTML='WHO`S THE WINNER?'
+    }
+    
+
+</script>
+
+</html>
